@@ -42,9 +42,6 @@
     .aboutUs .container {
       flex-direction: column;
     }
-    .aboutUs iframe {
-      height: 50vh;
-    }
     .aboutUs .row {
       width: 100%;
     }

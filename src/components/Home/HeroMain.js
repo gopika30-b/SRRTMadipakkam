@@ -1,53 +1,69 @@
-import React from 'react';
+import React, { useState } from "react";
+import { HiArrowRight, HiArrowLeft } from "react-icons/hi";
 
 const HeroMain = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const data = [
+    "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
+    "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
+    "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
+    "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
+  ];
+  const prevSlide = () => {
+    setCurrentSlide(currentSlide === 0 ? 3 : (prev) => prev - 1);
+  };
+  const nextSlide = () => {
+    setCurrentSlide(currentSlide === 3 ? 0 : (prev) => prev + 1);
+  };
   return (
-    <header style={{ paddingLeft: 0 }}>
-      <div
-        className='p-5 text-center bg-image position-relative'
-        style={{ 
-          backgroundImage: "url('https://mdbootstrap.com/img/new/slides/041.webp')",
-          backgroundSize: 'cover', // Ensure the background covers the entire container
-          backgroundPosition: 'center', // Center the background image
-          height: '87vh',
-        }}
-      >
+    <div className="w-full h-auto overflow-x-hidden">
+      <div className="h-[550px] w-screen relative">
         <div
-          className='mask'
-          style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            boxSizing: 'border-box', 
-          }}
+          style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
+          className="w-[400vw] h-full flex transition-transform duration-1000"
         >
-          <div className='text-white'>
-            <h1 className='mb-3' style={{ fontSize: '3rem' }}>Heading</h1>
-            <h4 className='mb-3' style={{ fontSize: '1.5rem' }}>Subheading</h4>
-            <a 
-              className='btn btn-outline-light btn-lg' 
-              href='#!' 
-              role='button'
-              style={{ 
-                fontSize: '1.2rem', 
-                padding: '10px 30px',
-                textDecoration: 'none',
-                borderRadius: '30px',
-              }}
-            >
-              Call to action
-            </a>
+          <img
+            className="w-screen h-full object-cover"
+            src={data[0]}
+            alt="ImageOne"
+            loading="priority"
+          />
+          <img
+            className="w-screen h-full object-cover"
+            src={data[1]}
+            alt="ImageTwo"
+            loading="lazy"
+          />
+          <img
+            className="w-screen h-full object-cover"
+            src={data[2]}
+            alt="ImageThree"
+            loading="lazy"
+          />
+          <img
+            className="w-screen h-full object-cover"
+            src={data[3]}
+            alt="ImageFour"
+            loading="lazy"
+          />
+        </div>
+        <div className="absolute w-fit left-0 right-0 mx-auto flex gap-8 bottom-10">
+          <div
+            onClick={prevSlide}
+            className="w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
+          >
+            <HiArrowLeft />
+          </div>
+          <div
+            onClick={nextSlide}
+            className="w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
+          >
+            <HiArrowRight />
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
-}
+};
 
 export default HeroMain;

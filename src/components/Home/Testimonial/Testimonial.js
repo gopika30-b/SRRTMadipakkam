@@ -10,13 +10,13 @@ const Testimonal = () => {
           <div className='container'>
             <Heading subtitle='TESTIMONIAL' title='Our Happy Clients' />
   
-            <div className='content grid2'>
+            <div className='content grid1'>
               {testimonal.map((val) => (
                 <div className='items shadow'>
                   <div className='box flex'>
                     <div className='img'>
                       <img src={val.cover} alt='' />
-                      <i className='fa fa-quote-left icon'></i>
+                      <i className='fa fa-quote-left iconT'></i>
                     </div>
                     <div className='name'>
                       <h2>{val.name}</h2>
